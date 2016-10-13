@@ -13,12 +13,7 @@
           p:suffix=".jsp"/>
 
     <bean id="urlMapping"
-          class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-        <property name="mappings">
-            <props>
-                <prop key="">myController</prop>
-            </props>
-        </property>
+          class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter">
     </bean>
 
     <mvc:annotation-driven />
