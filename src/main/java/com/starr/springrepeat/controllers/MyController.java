@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MyController {
 
-    @RequestMapping (method = RequestMethod.GET)
-    public String getPage(){
-        return "index";
-    }
-
     @RequestMapping(value="/jsonPublic", method = RequestMethod.GET)
     @JsonView(UserDTO.Public.class)
     public UserDTO getPublic() {
