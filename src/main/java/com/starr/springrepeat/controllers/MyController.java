@@ -4,17 +4,17 @@ import com.starr.springrepeat.dto.UserDTO;
 import com.starr.springrepeat.jsonview.ProfileView;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ObjectWriter;
+import org.codehaus.jackson.map.annotate.JsonView;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-@Controller
+@RestController
 public class MyController {
-
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @RequestMapping (method = RequestMethod.GET)
     public String getPage(){
@@ -22,17 +22,15 @@ public class MyController {
     }
 
     @RequestMapping(value="/jsonPublic", method = RequestMethod.GET)
-    @ResponseBody
-    public String getPublic() throws IOException {
-        ObjectWriter objectWriter = objectMapper.writerWithView(ProfileView.Public.class);
-        return objectWriter.writeValueAsString(createUser());
+    @JsonView(ProfileView.Public.class)
+    public UserDTO getPublic() {
+        return createUser();
     }
 
     @RequestMapping(value="/jsonRoot", method = RequestMethod.GET)
-    @ResponseBody
-    public String getRoot() throws IOException {
-        ObjectWriter objectWriter = objectMapper.writerWithView(ProfileView.Root.class);
-        return objectWriter.writeValueAsString(createUser());
+    @JsonView(ProfileView.Root.class)
+    public UserDTO getRoot() {
+        return createUser();
     }
 
     private UserDTO createUser(){
