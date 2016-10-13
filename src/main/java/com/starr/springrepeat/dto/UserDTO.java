@@ -1,14 +1,18 @@
 package com.starr.springrepeat.dto;
 
-import com.starr.springrepeat.jsonview.ProfileView;
 import org.codehaus.jackson.map.annotate.JsonView;
 
 public class UserDTO {
 
-    @JsonView(ProfileView.Public.class)
+
+    public interface Public {}
+
+    public interface Root extends Public {}
+
+    @JsonView(Public.class)
     private String username;
 
-    @JsonView(ProfileView.Root.class)
+    @JsonView(Root.class)
     private String password;
 
     public String getUsername() {

@@ -1,17 +1,11 @@
 package com.starr.springrepeat.controllers;
 
 import com.starr.springrepeat.dto.UserDTO;
-import com.starr.springrepeat.jsonview.ProfileView;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.ObjectWriter;
+import com.starr.springrepeat.utils.UserUtil;
 import org.codehaus.jackson.map.annotate.JsonView;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
 
 @RestController
 public class MyController {
@@ -22,21 +16,16 @@ public class MyController {
     }
 
     @RequestMapping(value="/jsonPublic", method = RequestMethod.GET)
-    @JsonView(ProfileView.Public.class)
+    @JsonView(UserDTO.Public.class)
     public UserDTO getPublic() {
-        return createUser();
+        return UserUtil.createUser();
     }
 
     @RequestMapping(value="/jsonRoot", method = RequestMethod.GET)
-    @JsonView(ProfileView.Root.class)
+    @JsonView(UserDTO.Root.class)
     public UserDTO getRoot() {
-        return createUser();
+        return UserUtil.createUser();
     }
 
-    private UserDTO createUser(){
-        UserDTO user = new UserDTO();
-        user.setUsername("tania");
-        user.setPassword("12345");
-        return user;
-    }
+
 }
