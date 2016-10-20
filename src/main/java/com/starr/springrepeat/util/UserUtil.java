@@ -1,4 +1,4 @@
-package com.starr.springrepeat.utils;
+package com.starr.springrepeat.util;
 
 import com.starr.springrepeat.dto.UserDTO;
 

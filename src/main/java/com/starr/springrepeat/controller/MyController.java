@@ -1,7 +1,7 @@
-package com.starr.springrepeat.controllers;
+package com.starr.springrepeat.controller;
 
 import com.starr.springrepeat.dto.UserDTO;
-import com.starr.springrepeat.utils.UserUtil;
+import com.starr.springrepeat.util.UserUtil;
 import org.codehaus.jackson.map.annotate.JsonView;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
