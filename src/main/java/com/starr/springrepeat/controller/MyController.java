@@ -1,7 +1,6 @@
 package com.starr.springrepeat.controller;
 
-import com.starr.springrepeat.dto.UserDTO;
-import com.starr.springrepeat.util.UserUtil;
+import com.starr.springrepeat.entity.User;
 import org.codehaus.jackson.map.annotate.JsonView;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,15 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class MyController {
 
     @RequestMapping(value="/jsonPublic", method = RequestMethod.GET)
-    @JsonView(UserDTO.Public.class)
-    public UserDTO getPublic() {
-        return UserUtil.createUser();
+    @JsonView(User.Public.class)
+    public User getPublic() {
+        return new User();
     }
 
     @RequestMapping(value="/jsonRoot", method = RequestMethod.GET)
-    @JsonView(UserDTO.Root.class)
-    public UserDTO getRoot() {
-        return UserUtil.createUser();
+    @JsonView(User.Root.class)
+    public User getRoot() {
+        return new User();
     }
 
 
