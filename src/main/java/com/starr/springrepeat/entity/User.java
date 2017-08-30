@@ -19,6 +19,14 @@ public class User {
     public interface Root extends Public {
     }
 
+    public User() {
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
